@@ -2,22 +2,20 @@
 
 ## Run
 
-1. gradle wrapper
+1. clean
 
   ```bash
-  gradle wrapper
+  make clean
   ```
 
-1. edit wrapper distributionUrl
+1. wrapper
 
-  Edit ./gradle/wrapper/gradle-wrapper.properties
-
-  ```properties
-  distributionUrl=${local_gradle_zip_file}
+  ```bash
+  make wrapper
   ```
 
 1. run spring boot
 
   ```bash
-  ./gradlew bootRun
+  make run
   ```
