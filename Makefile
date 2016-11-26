@@ -5,7 +5,8 @@ cwd := $(abspath ${mkfile_path}/../)
 ifeq ($(platform), Darwin)
 	sed := gsed
 endif
-testGradleZipFile := $(HOME)/.sdkman/archives/gradle-3.2.zip
+gradleVersion := 3.2
+testGradleZipFile := $(HOME)/.sdkman/archives/gradle-$(gradleVersion).zip
 
 all:
 	@make help
