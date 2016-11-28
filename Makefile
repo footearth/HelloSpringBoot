@@ -47,12 +47,12 @@ idea:
 	fi
 
 run:
-	@if [ ! -a ${cwd}/gradlew ]; then \
+	@if [ -a ./gradlew ]; then \
 		make wrapper; \
 	fi
-	@if [ -a ${cwd}/gradlew ]; then \
-		@${cwd}/gradlew bootRun; \
-	fi
+	@# @if [ -a ${cwd}/gradlew ]; then \
+	# 	${cwd}/gradlew bootRun; \
+	# fi
 
 clean:
 	@gradle clean
