@@ -20,6 +20,8 @@ list:
 	@echo " - clean"
 	@echo " - list"
 	@echo " - run"
+	@echo " - run_dev"
+	@echo " - run_prd"
 
 help:
 	@make list
@@ -53,6 +55,12 @@ run:
 	@if [ -a ${cwd}/gradlew ]; then \
 	 	${cwd}/gradlew bootRun; \
 	fi
+
+run_dev:
+	@env SPRING_PROFILES_ACTIVE=dev make run
+
+run_prd:
+	@env SPRING_PROFILES_ACTIVE=prd make run
 
 clean:
 	@gradle clean

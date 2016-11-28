@@ -1,0 +1,13 @@
+spring:
+  profiles: dev
+
+server:
+  port: 8080
+
+---
+
+spring:
+  profiles: prd
+
+server:
+  port: 9090
