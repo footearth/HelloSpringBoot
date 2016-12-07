@@ -2,12 +2,15 @@ mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 platform := $(shell uname)
 cwd := $(abspath ${mkfile_path}/../)
+
 ifeq ($(platform), Darwin)
 	sed := gsed
 endif
-gradleVersion := 3.2
-testGradleZipFile := $(HOME)/.sdkman/archives/gradle-$(gradleVersion).zip
+
 projectName := HelloSpringBoot
+gradleVersion := 3.2
+
+testGradleZipFile := $(HOME)/.sdkman/archives/gradle-$(gradleVersion).zip
 ideaProjectFile := $(projectName).ipr
 
 all:
@@ -26,41 +29,9 @@ list:
 help:
 	@make list
 
-wrapper:
-	@gradle wrapper
-	@if [ -a $(testGradleZipFile) ]; then \
-		$(sed) -ie "/distributionUrl/c distributionUrl=file:$(testGradleZipFile)" ./gradle/wrapper/gradle-wrapper.properties; \
-	fi
-
-pre_idea:
-	@if [ ! -a ${cwd}/gradlew ]; then \
-		make wrapper; \
-	fi
-	@if [ -a ${cwd}/gradlew ]; then \
-		${cwd}/gradlew idea; \
-	fi
-
-idea:
-	@if [ ! -a $(ideaProjectFile) ]; then \
-		make pre_idea; \
-	fi
-	@if [ -a $(ideaProjectFile) ]; then \
-		idea ${cwd}/${projectName}.ipr; \
-	fi
-
-run:
-	@if [ ! -a ${cwd}/gradlew ]; then \
-		make wrapper; \
-	fi
-	@if [ -a ${cwd}/gradlew ]; then \
-	 	${cwd}/gradlew bootRun; \
-	fi
-
-run_dev:
-	@env SPRING_PROFILES_ACTIVE=dev make run
-
-run_prd:
-	@env SPRING_PROFILES_ACTIVE=prd make run
+include $(cwd)/make/gradle.mk
+include $(cwd)/make/idea.mk
+include $(cwd)/make/docker/mongo.mk
 
 clean:
 	@gradle clean
