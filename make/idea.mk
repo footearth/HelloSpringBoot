@@ -13,3 +13,13 @@ idea:
 	@if [ -a $(ideaProjectFile) ]; then \
 		idea ${cwd}/${projectName}.ipr; \
 	fi
+
+idea_clean:
+	@for file in \
+		".idea" \
+		"${projectName}.iml" \
+		"${projectName}.ipr" \
+		"${projectName}.iws" \
+	; do \
+		rm -rf "${cwd}/$${file}"; \
+	done

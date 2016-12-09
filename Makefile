@@ -34,16 +34,8 @@ include $(cwd)/make/idea.mk
 include $(cwd)/make/docker/mongo.mk
 
 clean:
-	@gradle clean
-	@for file in \
-		"gradlew" \
-		"gradlew.bat" \
-		".gradle" \
-		"gradle" \
-		".idea" \
-		"${projectName}.iml" \
-		"${projectName}.ipr" \
-		"${projectName}.iws" \
-	; do \
-		rm -rf "${cwd}/$${file}"; \
-	done
+	@make gradle_clean
+
+clean_all:
+	@make clean
+	@make idea_clean

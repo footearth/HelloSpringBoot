@@ -1,17 +1,17 @@
-package Hello.model;
+package Hello.model
 
-import org.springframework.data.annotation.Id;
-import java.util.Date;
+import org.springframework.data.annotation.Id
+//import java.util.Date
 
-public class Event {
+class Event {
   @Id
-  private String id;
+  private String id
 
-  private String name;
-  private Integer numberLimit;
-  private String mainPhoto;
-  private String introduction;
+  private String name
+  private Integer numberLimit
+  private String mainPhoto
+  private String introduction
 
-  private Date startAt;
-  private Date endAt;
+  private Date startAt
+  private Date endAt
 }

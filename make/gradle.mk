@@ -17,3 +17,14 @@ run_dev:
 
 run_prd:
 	@env SPRING_PROFILES_ACTIVE=prd make run
+
+gradle_clean:
+	@gradle clean
+	@for file in \
+		"gradlew" \
+		"gradlew.bat" \
+		".gradle" \
+		"gradle" \
+	; do \
+		rm -rf "${cwd}/$${file}"; \
+	done
