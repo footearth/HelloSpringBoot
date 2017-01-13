@@ -5,10 +5,12 @@ cwd := $(abspath ${mkfile_path}/../)
 
 ifeq ($(platform), Darwin)
 	sed := gsed
+else
+	sed := sed
 endif
 
 projectName := HelloSpringBoot
-gradleVersion := 3.2
+gradleVersion := 3.3
 
 testGradleZipFile := $(HOME)/.sdkman/archives/gradle-$(gradleVersion).zip
 ideaProjectFile := $(projectName).ipr
@@ -30,8 +32,8 @@ help:
 	@make list
 
 include $(cwd)/make/gradle.mk
-include $(cwd)/make/idea.mk
-include $(cwd)/make/docker/mongo.mk
+# include $(cwd)/make/idea.mk
+# include $(cwd)/make/docker/mongo.mk
 
 clean:
 	@gradle clean
