@@ -32,7 +32,7 @@ help:
 	@make list
 
 include $(cwd)/make/gradle.mk
-# include $(cwd)/make/idea.mk
+include $(cwd)/make/idea.mk
 # include $(cwd)/make/docker/mongo.mk
 
 clean:
