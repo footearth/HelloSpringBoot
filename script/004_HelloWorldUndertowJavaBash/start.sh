@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
+cwd="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
+grapes_dir=$HOME/.groovy/grapes
+
 java \
--cp \
-"${HOME}/.groovy/grapes/io.undertow/undertow-core/jars/undertow-core-2.0.0.Alpha1.jar:\
-${HOME}/.groovy/grapes/org.jboss.xnio/xnio-api/jars/xnio-api-3.3.6.Final.jar:\
-${HOME}/.groovy/grapes/org.jboss.xnio/xnio-nio/jars/xnio-nio-3.3.6.Final.jar:\
-${HOME}/_HOME_/WORKSPACE/JAVA/HelloSpringBoot/script/004_HelloWorldUndertowJavaBash:\
-${HOME}/.groovy/grapes/org.jboss.logging/jboss-logging/jars/jboss-logging-3.2.1.Final.jar" \
+-cp "\
+${grapes_dir}/io.undertow/undertow-core/jars/undertow-core-2.0.0.Alpha1.jar:\
+${grapes_dir}/org.jboss.xnio/xnio-api/jars/xnio-api-3.3.6.Final.jar:\
+${grapes_dir}/org.jboss.xnio/xnio-nio/jars/xnio-nio-3.3.6.Final.jar:\
+${grapes_dir}/org.jboss.logging/jboss-logging/jars/jboss-logging-3.2.1.Final.jar:\
+${cwd}\
+" \
 HelloWorldServer
