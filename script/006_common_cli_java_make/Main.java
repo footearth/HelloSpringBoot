@@ -18,19 +18,25 @@ public class Main {
     CommandLineParser parser = new DefaultParser();
 
     // System.out.println(args[0]);
-
+    CommandLine cmd = null;
     try {
       // parse the command line arguments
-      CommandLine cmd = parser.parse( options, args );
+      cmd = parser.parse( options, args );
     }
     catch( ParseException exp ) {
       // oops, something went wrong
       System.err.println( "Parsing failed.  Reason: " + exp.getMessage() );
     }
 
-    // automatically generate the help statement
-    HelpFormatter formatter = new HelpFormatter();
-    formatter.printHelp( "ant", options );
+    if(cmd.hasOption("t")) {
+      // print the date and time
+      System.out.println("hello");
+    }
+    else {
+      // automatically generate the help statement
+      HelpFormatter formatter = new HelpFormatter();
+      formatter.printHelp( "ant", options );
+    }
 
   }
 
