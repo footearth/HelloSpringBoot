@@ -14,6 +14,7 @@ public class Main {
 
     // add t option
     options.addOption("t", false, "display current time");
+    options.addOption("c", true, "country code");
 
     CommandLineParser parser = new DefaultParser();
 
@@ -31,6 +32,18 @@ public class Main {
     if(cmd.hasOption("t")) {
       // print the date and time
       System.out.println("hello");
+    }
+    else if(cmd.hasOption("c")) {
+      // get c option value
+      String countryCode = cmd.getOptionValue("c");
+      if(countryCode == null) {
+        // print default date
+        System.out.println("hello");
+      }
+      else {
+        // print date for country specified by countryCode
+        System.out.println("hello " + countryCode);
+      }
     }
     else {
       // automatically generate the help statement
