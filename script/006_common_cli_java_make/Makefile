@@ -8,7 +8,7 @@ clean:
 	@rm -rf ${cwd}/build
 
 install:
-	@mkdir -p ${cwd}/java_modules
+	@mkdir -p ${cwd}/java_modules/commons-cli
 	@curl -C - -o ${cwd}/java_modules/commons-cli/commons-cli-1.4.jar \
 		https://repository.apache.org/content/groups/snapshots/commons-cli/commons-cli/1.4-SNAPSHOT/commons-cli-1.4-20161117.005127-21.jar
 
