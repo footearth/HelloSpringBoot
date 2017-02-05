@@ -1,0 +1,50 @@
+buildscript {
+  ext {
+    gradleVersion = '3.3'
+    groovyVersion = '2.4.8'
+    nexusAliyun = "http://maven.aliyun.com/nexus/content/groups/public/"
+  }
+  repositories {
+    // maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenLocal()
+    // mavenCentral()
+
+    // jcenter()
+    jcenter { url "${nexusAliyun}" }
+  }
+  // dependencies {
+  //   classpath()
+  // }
+}
+
+apply plugin: 'java'
+
+jar {
+  baseName = 'undertow-example-servlet'
+  version =  '0.0.0'
+}
+
+repositories {
+  mavenLocal()
+  jcenter { url "${nexusAliyun}" }
+}
+
+dependencies {
+  compile "io.undertow:undertow-core:2.0.0.Alpha1"
+  compile "io.undertow:undertow-servlet:2.0.0.Alpha1"
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "${gradleVersion}"
+}
+
+task run(type: JavaExec, dependsOn: 'classes') {
+  description '运行指定main函数的java'
+  classpath = sourceSets.main.runtimeClasspath
+  println "the classpath: "
+  classpath.each { println it }
+  if(project.hasProperty('main')){
+    println "main: io.undertow.examples.servlet.ServletServer"
+    main = "io.undertow.examples.servlet.ServletServer"
+  }
+}
